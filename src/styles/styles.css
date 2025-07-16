@@ -7,6 +7,10 @@
     --dove-gray: #666666;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 html,body {
     height: 100%;
 }
@@ -128,4 +132,13 @@ img[alt="Logo"]{
 
 .content {
     width: 80%;
+    padding: 35px;
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-area {
+    width: 100%;
+    border: 1px solid red;
 }
