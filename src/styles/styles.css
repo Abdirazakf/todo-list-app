@@ -28,7 +28,6 @@ body {
     padding: 25px 10px 10px 10px;
     background-color: var(--task-bar-color);
 }
-
 .task-bar-header {
     display: flex;
     align-items: center;
@@ -38,6 +37,19 @@ body {
 
 img[alt="Logo"]{
     width: 48px;
+}
+
+.task-bar-header > button {
+    background-color: var(--task-bar-color);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-left: auto;
+}
+
+.task-bar-header > button:hover {
+    background-color: var(--task-bar-highlight);
+    cursor: pointer;
 }
 
 .logo-header {
@@ -97,7 +109,6 @@ img[alt="Logo"]{
     opacity: 0;
     padding: 5px 10px;
     border-radius: 5px;
-    color: black;
     display: flex;
     align-items: center;
 }
