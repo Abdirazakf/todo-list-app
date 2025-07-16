@@ -3,6 +3,8 @@
     --task-bar-highlight: #dadde1;
     --orange: #dd4c3e;
     --orange-highlight: #fff0e5;
+    --light-gray: #b6b5b4;
+    --dove-gray: #666666;
 }
 
 html,body {
@@ -58,10 +60,12 @@ img[alt="Logo"]{
     border: none;
     border-radius: 10px;
     background-color: var(--task-bar-color);
+    color: var(--dove-gray);
 }
 
 .task-bar-buttons > button:hover {
     background-color: var(--task-bar-highlight);
+    color: black;
     cursor: pointer;
 }
 
@@ -73,26 +77,53 @@ img[alt="Logo"]{
 .project-header {
     padding: 10px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 10px;
+    border-radius: 10px;
 }
 
 .project-title {
     margin: 0;
-}
-
-.project-header > button {
-    background-color: var(--task-bar-color);
-    border: none;
+    color: var(--dove-gray);
 }
 
 .project-header:hover {
     background-color: var(--task-bar-highlight);
 }
 
-.project-header:hover::after button {
-    cursor: pointer;
+.project-header > button {
+    background-color: var(--task-bar-highlight);
+    border: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: black;
+}
+
+.add-project-button {
+    margin-left: auto;
+}
+
+.add-project-button:before {
     content: "+";
+    font-size: 24px;
+    color: var(--dove-gray);
+}
+
+.resize-project-button::before {
+    content: "⌄";
+    font-size: 24px;
+    color: var(--dove-gray);
+}
+
+.project-header:hover > button {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.project-header:hover > button:hover {
+    background-color: #b6b5b4;
 }
 
 .content-area {
