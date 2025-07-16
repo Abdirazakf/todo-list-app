@@ -95,26 +95,15 @@ img[alt="Logo"]{
     background-color: var(--task-bar-highlight);
     border: none;
     opacity: 0;
-    transition: opacity 0.2s ease;
     padding: 5px 10px;
     border-radius: 5px;
     color: black;
+    display: flex;
+    align-items: center;
 }
 
 .add-project-button {
     margin-left: auto;
-}
-
-.add-project-button:before {
-    content: "+";
-    font-size: 24px;
-    color: var(--dove-gray);
-}
-
-.resize-project-button::before {
-    content: "⌄";
-    font-size: 24px;
-    color: var(--dove-gray);
 }
 
 .project-header:hover > button {
@@ -126,7 +115,6 @@ img[alt="Logo"]{
     background-color: #b6b5b4;
 }
 
-.content-area {
+.content {
     width: 80%;
-    border: 1px solid red
 }
