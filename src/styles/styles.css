@@ -5,6 +5,7 @@
     --orange-highlight: #fff0e5;
     --light-gray: #b6b5b4;
     --dove-gray: #666666;
+    --light-red: #e52e26;
 }
 
 * {
@@ -28,7 +29,6 @@ body {
 .task-bar {
     width: 18%;
     min-width: 310px;
-    /* border: 1px solid blue; */
     padding: 25px 10px 10px 10px;
     background-color: var(--task-bar-color);
 }
@@ -133,12 +133,74 @@ img[alt="Logo"]{
 .content {
     width: 80%;
     padding: 35px;
-    border: 1px solid red;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .content-area {
-    width: 100%;
-    border: 1px solid red;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-area > img {
+    width: 240px;
+}
+
+.content-area > h3 {
+    margin: 10px 0 0 0;
+}
+
+.content-area > p {
+    max-width: 400px;
+    text-align: center;
+}
+
+.add-task-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 9px 12px;
+  gap: 8px;
+  height: 40px;
+  width: 201px;
+  border: none;
+  background: var(--orange);
+  color: white;
+  font-size: 17px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.add-task-button:hover {
+  background: var(--light-red);
+}
+
+.add-task-button:hover .svg-icon {
+  animation: slope 1s linear infinite;
+}
+
+@keyframes slope {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(-10deg);
+  }
+
+  50% {
+    transform: rotate(0deg);
+  }
+
+  75% {
+    transform: rotate(10deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
 }
