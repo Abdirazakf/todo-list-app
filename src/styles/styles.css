@@ -27,11 +27,13 @@ body {
 }
 
 .task-bar {
-    width: 18%;
-    min-width: 310px;
-    padding: 25px 10px 10px 10px;
+    width: 20%;
+    padding: 20px 10px 10px 10px;
     background-color: var(--task-bar-color);
+    transition: all 0.5s ease-out;
+    overflow: hidden;
 }
+
 .task-bar-header {
     display: flex;
     align-items: center;
@@ -41,6 +43,7 @@ body {
 
 img[alt="Logo"]{
     width: 48px;
+    flex-shrink: 1;
 }
 
 .task-bar-header > button {
