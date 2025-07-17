@@ -130,6 +130,16 @@ eval("{module.exports = __webpack_require__.p + \"af484bd9da3cabcb0292.svg\";\n\
 
 /***/ }),
 
+/***/ "./src/assets/icons/calendar.svg":
+/*!***************************************!*\
+  !*** ./src/assets/icons/calendar.svg ***!
+  \***************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("{module.exports = __webpack_require__.p + \"e8b07f3695dc011de2fd.svg\";\n\n//# sourceURL=webpack://todo-list-app/./src/assets/icons/calendar.svg?\n}");
+
+/***/ }),
+
 /***/ "./src/assets/icons/check.svg":
 /*!************************************!*\
   !*** ./src/assets/icons/check.svg ***!
@@ -200,13 +210,33 @@ eval("{module.exports = __webpack_require__.p + \"60f827a32fd0f58acfe8.png\";\n\
 
 /***/ }),
 
+/***/ "./src/assets/img/waving.png":
+/*!***********************************!*\
+  !*** ./src/assets/img/waving.png ***!
+  \***********************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("{module.exports = __webpack_require__.p + \"a36fee3e126ae2881fa7.png\";\n\n//# sourceURL=webpack://todo-list-app/./src/assets/img/waving.png?\n}");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_reset_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/reset.css */ \"./src/styles/reset.css\");\n/* harmony import */ var _styles_styles_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles/styles.css */ \"./src/styles/styles.css\");\n/* harmony import */ var _modules_taskbar_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/taskbar.js */ \"./src/modules/taskbar.js\");\n\n\n\n\nconst taskbar = new _modules_taskbar_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"]()\n\ndocument.addEventListener(\"DOMContentLoaded\", () =>{\n    taskbar.createTaskBar()\n})\n\n//# sourceURL=webpack://todo-list-app/./src/index.js?\n}");
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_reset_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/reset.css */ \"./src/styles/reset.css\");\n/* harmony import */ var _styles_styles_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./styles/styles.css */ \"./src/styles/styles.css\");\n/* harmony import */ var _modules_taskbar_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/taskbar.js */ \"./src/modules/taskbar.js\");\n/* harmony import */ var _modules_homepage_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/homepage.js */ \"./src/modules/homepage.js\");\n\n\n\n\n\nconst taskbar = new _modules_taskbar_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"]()\nconst homepage = new _modules_homepage_js__WEBPACK_IMPORTED_MODULE_3__[\"default\"]()\n\ndocument.addEventListener(\"DOMContentLoaded\", () =>{\n    taskbar.createTaskBar()\n    homepage.loadHomepage()\n})\n\n//# sourceURL=webpack://todo-list-app/./src/index.js?\n}");
+
+/***/ }),
+
+/***/ "./src/modules/homepage.js":
+/*!*********************************!*\
+  !*** ./src/modules/homepage.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Homepage)\n/* harmony export */ });\n/* harmony import */ var _assets_img_waving_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../assets/img/waving.png */ \"./src/assets/img/waving.png\");\n/* harmony import */ var _assets_icons_calendar_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../assets/icons/calendar.svg */ \"./src/assets/icons/calendar.svg\");\n\n\n\nclass Homepage {\n    loadHomepage() {\n        const content = document.querySelector(\".content\")\n\n        function createHeader() {\n            const header = document.createElement(\"h1\")\n            header.textContent = \"Welcome to PlannerPro (Your go to Schedule Planner)\"\n            content.appendChild(header)\n        }\n\n        function homepageContent() {\n            const contentArea = document.createElement(\"div\")\n            contentArea.classList.add(\"content-area\")\n\n            const wavingHand = document.createElement(\"img\")\n            wavingHand.src = _assets_img_waving_png__WEBPACK_IMPORTED_MODULE_0__\n            contentArea.appendChild(wavingHand)\n\n            const header = document.createElement(\"h3\")\n            header.textContent = \"Let's Start Planning!\"\n            contentArea.appendChild(header)\n\n            const para = document.createElement(\"p\")\n            para.textContent = `Your Inbox will list your most urgent tasks first, and should be your go to place\n            to add quick tasks. Don't forget you can also create projects!`\n            contentArea.appendChild(para)\n\n            const addTaskButton = document.createElement(\"button\")\n            addTaskButton.classList.add(\"add-task-button\")\n            const addTaskSvg = document.createElement(\"img\")\n            addTaskSvg.classList.add(\"svg-icon\")\n            addTaskSvg.src = _assets_icons_calendar_svg__WEBPACK_IMPORTED_MODULE_1__\n            addTaskButton.appendChild(addTaskSvg)\n            const addTaskSpan = document.createElement(\"span\")\n            addTaskSpan.textContent = \"Add a Task\"\n            addTaskButton.appendChild(addTaskSpan)\n            contentArea.appendChild(addTaskButton)\n            \n            content.appendChild(contentArea)\n        }\n\n        createHeader()\n        homepageContent()\n    }\n}\n\n//# sourceURL=webpack://todo-list-app/./src/modules/homepage.js?\n}");
 
 /***/ }),
 
