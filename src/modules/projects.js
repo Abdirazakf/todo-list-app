@@ -11,29 +11,47 @@ export default class Projects {
         });
     }
     
-    taskBarEvents() {
+    projectUIEvents() {
         function showProjectList(){
             const resizeProjectButton = document.querySelector(".resize-project-button")
             const projectList = document.querySelector(".project-list")
             
             resizeProjectButton.addEventListener("click", () => {
                 if (resizeProjectButton.className == "resize-project-button expanded"){
-                    console.log("It's open")
                     projectList.style.height = "100%"
                     projectList.style.padding = "10px"
                 } else {
                     projectList.style.height = 0
                     projectList.style.padding = 0
-                    console.log("It's closed")
                 }
+            })
+        }
+
+        function openProjectModal() {
+            const addProjectButton = document.querySelector(".add-project-button")
+            const projectModal = document.querySelector(".project-modal")
+
+            addProjectButton.addEventListener("click", () => {
+                projectModal.showModal()
+            })
+        }
+
+        function closeProjectModal() {
+            const closeButton = document.querySelector(".close-button")
+            const projectModal = document.querySelector(".project-modal")
+
+            closeButton.addEventListener("click", () => {
+                projectModal.close()
             })
         }
         
         showProjectList()
+        openProjectModal()
+        closeProjectModal()
     }
 
     init(){
         this.expandProjectButton()
-        this.taskBarEvents()
+        this.projectUIEvents()
     }
 }
