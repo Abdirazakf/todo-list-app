@@ -124,8 +124,25 @@ export default class taskBar {
             taskbar.appendChild(projectContainer)
         }
 
+        function createProjectList(){
+            const projectContainer = document.querySelector(".project-container")
+            const projectList = document.createElement("div")
+            projectList.classList.add("project-list")
+
+            const defaultProject = document.createElement("button")
+            defaultProject.textContent = "Default"
+            projectList.appendChild(defaultProject)
+            
+            projectContainer.appendChild(projectList)
+        }
+
         createTaskBarHeader()
         createTaskBarButtons()
         createTaskBarProjects()
+        createProjectList()
+    }
+
+    init() {
+        this.createTaskBar()
     }
 }
