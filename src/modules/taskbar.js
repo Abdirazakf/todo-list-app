@@ -117,6 +117,7 @@ export default class taskBar {
             resizeProjectButton.classList.add("resize-project-button")
             const resizeSvg = document.createElement("img")
             resizeSvg.src = arrow_down
+            resizeSvg.classList.add("svg-icon")
             resizeProjectButton.appendChild(resizeSvg)
             projectHeader.appendChild(resizeProjectButton)
 

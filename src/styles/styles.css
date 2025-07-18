@@ -183,7 +183,16 @@ img[alt="Logo"]{
 }
 
 .add-task-button:hover .svg-icon {
-  animation: slope 1s linear infinite;
+    animation: slope 1s linear infinite;
+}
+
+.resize-project-button > .svg-icon {
+    transition: transform 0.3s ease;
+    transform: rotate(0deg)
+}
+
+.resize-project-button.expanded .svg-icon {
+    transform: rotate(-90deg);
 }
 
 @keyframes slope {
@@ -206,4 +215,14 @@ img[alt="Logo"]{
   100% {
     transform: rotate(0deg);
   }
+}
+
+@keyframes turn {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(-90deg)
+    }
 }
