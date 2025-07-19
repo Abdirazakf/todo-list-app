@@ -187,7 +187,7 @@ export default class Modal {
 
             const submitButton = document.createElement("button")
             submitButton.type = "submit"
-            submitButton.classList.add("submit-button")
+            submitButton.classList.add("submit-button-2")
             container.appendChild(submitButton)
             const submitSpan = document.createElement("span")
             submitSpan.textContent = "Add Project"

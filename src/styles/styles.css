@@ -294,7 +294,8 @@ input:focus{
     gap: 20px;
 }
 
-.submit-button {
+.submit-button,
+.submit-button-2 {
  outline: none;
  cursor: pointer;
  border: none;
@@ -313,18 +314,22 @@ input:focus{
  color: ghostwhite;
 }
 
-.submit-button span {
+.submit-button span,
+.submit-button-2 span {
  position: relative;
  z-index: 10;
  transition: color 0.4s;
 }
 
-.submit-button:hover span {
+.submit-button:hover span,
+.submit-button-2:hover span {
  color: black;
 }
 
 .submit-button::before,
-.submit-button::after {
+.submit-button::after,
+.submit-button-2::before,
+.submit-button-2::after {
  position: absolute;
  top: 0;
  left: 0;
@@ -333,7 +338,8 @@ input:focus{
  z-index: 0;
 }
 
-.submit-button::before {
+.submit-button::before,
+.submit-button-2::before {
  content: "";
  background: #000;
  width: 120%;
@@ -342,7 +348,8 @@ input:focus{
  transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
 }
 
-.submit-button:hover::before {
+.submit-button:hover::before,
+.submit-button-2:hover::before {
  transform: translate3d(100%, 0, 0);
 }
 
@@ -379,15 +386,13 @@ input:focus{
 }
 
 .close-button:hover, 
-.close-button-2:hover,
-button:focus {
+.close-button-2:hover {
   color: white;
   cursor: pointer;
 }
 
 .close-button:hover:before,
-.close-button-2:hover:before,
-button:focus:before {
+.close-button-2:hover:before {
   transition: 0.5s all ease;
   left: 0;
   right: 0;
