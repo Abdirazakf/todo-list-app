@@ -9,72 +9,22 @@
         <div class="task-bar"></div>
         <div class="content"></div>
 
-        <dialog class="task-modal">
-            <h2>Add a Task</h2>
-            <form>
-                <p>
-                    <div>
-                        <label for="title">Title:</label>
-                    </div>
-                    <input type="text" name="title" id="title" required maxlength="30">
-                </p>
-                <p>
-                    <div>
-                        <label for="description">Description:</label>
-                    </div>
-                    <input type="text" name="description" id="description" maxlength="200">
-                </p>
-                <p>
-                    <div>
-                        <label for="date">Due Date</label>
-                    </div>
-                    <input type="datetime-local" name="date" id="date" min="">
-                </p>
-                <p>
-                    <div>
-                        <label>Priority</label>
-                    </div>
-                    <div class="radio-buttons">
-                        <label class="radio-button" for="low-option">
-                            <input type="radio" id="low-option" name="priority" value="low">
-                            <div class="radio-circle"></div>
-                            <span class="radio-label">Low</span>
-                        </label>
-                        <label class="radio-button" for="medium-option">
-                            <input type="radio" id="medium-option" name="priority" value="medium">
-                            <div class="radio-circle"></div>
-                            <span class="radio-label">Medium</span>
-                        </label>
-                        <label class="radio-button" for="high-option">
-                            <input type="radio" id="high-option" name="priority" value="high">
-                            <div class="radio-circle"></div>
-                            <span class="radio-label">High</span>
-                        </label>
-                    </div>
-                </p>
-                <div class="button-container">
-                    <button type="submit" class="submit-button">
-                        <span>Add Project</span>
-                    </button>
-                    <button class="close-button">Close</button>
-                </div>
-            </form>
-        </dialog>
+        <dialog class="task-modal"></dialog>
         <dialog class="project-modal">
             <h2>Add a Project</h2>
             <form>
                 <p>
                     <div>
-                         <label for="project-name">Enter Project Name: </label>
+                         <label for="project-name">Enter Project Name (Max 50 characters): </label>
                     </div>
-                    <input type="text" id="project-name" name="project-name" required>
+                    <input type="text" id="project-name" name="project-name" required maxlength="50">
                 </p>
 
                 <div class="button-container">
                     <button type="submit" class="submit-button">
                         <span>Add Project</span>
                     </button>
-                    <button class="close-button">Close</button>
+                    <button class="close-button-2">Close</button>
                 </div>
             </form>
         </dialog>

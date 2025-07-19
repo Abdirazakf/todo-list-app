@@ -37,7 +37,7 @@ export default class Projects {
         }
 
         function closeProjectModal() {
-            const closeButton = document.querySelector(".close-button")
+            const closeButton = document.querySelector(".close-button-2")
             const projectModal = document.querySelector(".project-modal")
 
             closeButton.addEventListener("click", () => {
