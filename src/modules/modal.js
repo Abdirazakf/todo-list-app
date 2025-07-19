@@ -152,7 +152,55 @@ export default class Modal {
     }
 
     createProjectModal() {
-        
+        const projectModal = document.querySelector(".project-modal")
+        const header = document.createElement("h2")
+        header.textContent = "Add a Project"
+        projectModal.appendChild(header)
+
+        const form = document.createElement("form")
+        form.setAttribute("id", "project-form")
+        projectModal.appendChild(form)
+
+        function name() {
+            const para = document.createElement("p")
+            form.appendChild(para)
+            const nameDiv = document.createElement("div")
+            para.appendChild(nameDiv)
+
+            const label = document.createElement("label")
+            label.htmlFor = "project-name"
+            label.textContent = "Enter Project Name (Max 50 characters):"
+            nameDiv.appendChild(label)
+
+            const input = document.createElement("input")
+            input.setAttribute("id", "project-name")
+            input.name = "project-name"
+            input.required = true
+            input.maxLength = 50
+            para.appendChild(input)
+        }
+
+        function projectModalButtons() {
+            const container = document.createElement("div")
+            container.classList.add("button-container")
+            form.appendChild(container)
+
+            const submitButton = document.createElement("button")
+            submitButton.type = "submit"
+            submitButton.classList.add("submit-button")
+            container.appendChild(submitButton)
+            const submitSpan = document.createElement("span")
+            submitSpan.textContent = "Add Project"
+            submitButton.appendChild(submitSpan)
+
+            const closeButton = document.createElement("button")
+            closeButton.classList.add("close-button-2")
+            closeButton.textContent = "Close"
+            container.appendChild(closeButton)
+        }
+
+        name()
+        projectModalButtons()
     }
 
     init() {
