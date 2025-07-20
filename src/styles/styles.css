@@ -154,7 +154,8 @@ img[alt="Logo"]{
     background-color: var(--task-bar-highlight);
 }
 
-.project-header > button {
+.project-header > button,
+.project-delete-button {
     background-color: var(--task-bar-highlight);
     border: none;
     opacity: 0;
@@ -162,18 +163,21 @@ img[alt="Logo"]{
     border-radius: 5px;
     display: flex;
     align-items: center;
+    outline: none;
 }
 
 .add-project-button {
     margin-left: auto;
 }
 
-.project-header:hover > button {
+.project-header:hover > button,
+.project-item:hover > button {
     opacity: 1;
     cursor: pointer;
 }
 
-.project-header:hover > button:hover {
+.project-header:hover > button:hover,
+.project-delete-button:hover {
     background-color: #b6b5b4;
 }
 
@@ -248,7 +252,14 @@ img[alt="Logo"]{
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     overflow: hidden;
-    transition: all 0.2s ease-out;
+}
+
+.project-item {
+  min-height: 44px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
 }
 
 dialog {

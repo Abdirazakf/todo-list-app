@@ -1,4 +1,8 @@
 export default class Modal {
+    constructor(projectsInstance) {
+        this.projects = projectsInstance
+    }
+
     createTaskModal() {
         const taskModal = document.querySelector(".task-modal")
         const header = document.createElement("h2")
@@ -125,6 +129,39 @@ export default class Modal {
             highLabel.appendChild(highSpan)
         }
 
+        const project = () => {
+            const para5 = document.createElement("p")
+            form.appendChild(para5)
+            const div5 = document.createElement("div")
+            para5.appendChild(div5)
+
+            const projectLabel = document.createElement("label")
+            projectLabel.htmlFor = "project-select"
+            projectLabel.textContent = "Project"
+            div5.appendChild(projectLabel)
+            
+            const projectSelect = document.createElement("select")
+            projectSelect.setAttribute("id", "project-select")
+            projectSelect.required = true
+            para5.appendChild(projectSelect)
+
+            const defaultOption = document.createElement("option")
+            defaultOption.value = ""
+            defaultOption.textContent = "Select a project"
+            defaultOption.disabled = true
+            defaultOption.selected = true
+            projectSelect.appendChild(defaultOption)
+
+            if (this.projects){
+                this.projects.projects.forEach(p => {
+                    const option = document.createElement("option")
+                    option.textContent = project.name
+                    option.value = project.id
+                    projectSelect.appendChild(option)
+                });
+            }
+        }
+
         function taskModalButtons() {
             const container = document.createElement("div")
             container.classList.add("button-container")
@@ -148,6 +185,7 @@ export default class Modal {
         description()
         date()
         priority()
+        project()
         taskModalButtons()
     }
 

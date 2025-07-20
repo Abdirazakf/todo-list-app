@@ -1,3 +1,5 @@
+import deleteSvg from "../assets/icons/delete.svg"
+
 export default class Projects {
     constructor() {
         this.resizeButton = null
@@ -95,6 +97,13 @@ export default class Projects {
 
     addProject(project) {
         this.projects.push(project)
+
+        const event = new CustomEvent('projectAdded', {
+            detail: {
+                project: project
+            }
+        })
+        document.dispatchEvent(event)
     }
 
     removeProject(projectID) {
@@ -109,6 +118,21 @@ export default class Projects {
         }
     }
 
+    setCurrentProject(projectID) {
+        this.currentProjectID = projectID
+        this.displayProjects()
+
+        const event = new CustomEvent("projectChanged", {
+            detail: {
+                project: this.getCurrentProject()
+            }
+        })
+    }
+
+    getCurrentProject() {
+        return this.projects.find(p => p.id == this.currentProjectID)
+    }
+
     displayProjects() {
         const projectList = document.querySelector(".project-list")
 
@@ -119,8 +143,35 @@ export default class Projects {
                 const button = document.createElement("button")
                 button.classList.add("project-item")
                 button.dataset.indexNumber = project.id
-                button.textContent = project.name
+                const name = document.createElement("span")
+                name.textContent = project.name
+                button.appendChild(name)
                 projectList.appendChild(button)
+
+                if (project.id == this.currentProjectID){
+                    button.classList.add("active")
+                }
+
+                button.addEventListener("click", () => {
+                    this.setCurrentProject(project.id)
+                })
+
+                if (project.name !== "Default"){
+                    const deleteButton = document.createElement("button")
+                    deleteButton.classList.add("project-delete-button")
+                    const buttonImg = document.createElement("img")
+                    buttonImg.src = deleteSvg
+                    deleteButton.appendChild(buttonImg)
+                    
+                    deleteButton.addEventListener("click", (event) => {
+                        event.stopPropagation()
+                        if (confirm(`Delete project "${project.name}"?`)){
+                            this.removeProject(project.id)
+                        }
+                    })
+
+                    button.appendChild(deleteButton)
+                }
             })
         }
     }
