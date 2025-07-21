@@ -142,6 +142,7 @@ export default class Modal {
             
             const projectSelect = document.createElement("select")
             projectSelect.setAttribute("id", "project-select")
+            projectSelect.name = "project"
             projectSelect.required = true
             para5.appendChild(projectSelect)
 
@@ -154,9 +155,10 @@ export default class Modal {
 
             if (this.projects){
                 this.projects.projects.forEach(p => {
+                    console.log(`Adding ${p.name} to the list`)
                     const option = document.createElement("option")
-                    option.textContent = project.name
-                    option.value = project.id
+                    option.textContent = p.name
+                    option.value = p.id
                     projectSelect.appendChild(option)
                 });
             }
@@ -241,8 +243,41 @@ export default class Modal {
         projectModalButtons()
     }
 
+    refreshProjectDropdown() {
+        const  projectSelect = document.querySelector("#project-select")
+        if (projectSelect && this.projects){
+            projectSelect.innerHTML = ""
+
+            const defaultOption = document.createElement("option")
+            defaultOption.value = ""
+            defaultOption.textContent = "Select a project"
+            defaultOption.disabled = true
+            defaultOption.selected = true
+            projectSelect.appendChild(defaultOption)
+
+            this.projects.projects.forEach(p => {
+                const option = document.createElement("option")
+                option.textContent = p.name
+                option.value = p.id
+                projectSelect.appendChild(option)
+            })
+        }
+    }
+
     init() {
         this.createTaskModal()
         this.createProjectModal()
+
+        document.addEventListener("projectChanged", () => {
+            this.refreshProjectDropdown()
+        })
+
+        document.addEventListener("projectAdded", () =>{
+            this.refreshProjectDropdown()
+        })
+
+        document.addEventListener("projectRemoved", () => {
+            this.refreshProjectDropdown()
+        })
     }
 }

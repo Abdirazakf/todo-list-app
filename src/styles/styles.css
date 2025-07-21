@@ -108,6 +108,10 @@ img[alt="Logo"]{
     margin: 0;
 }
 
+.logo-header:hover {
+  cursor: pointer;
+}
+
 .task-bar-buttons{
     margin-bottom: 20px;
 }

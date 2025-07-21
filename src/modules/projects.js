@@ -103,6 +103,7 @@ export default class Projects {
                 project: project
             }
         })
+
         document.dispatchEvent(event)
     }
 
@@ -113,6 +114,14 @@ export default class Projects {
             if (this.currentProjectID == projectID) {
                 this.currentProjectID = this.projects[0].id
             }
+
+            const event = new CustomEvent('projectRemoved', {
+                detail: {
+                    project: this.currentProjectID
+                }
+            })
+
+            document.dispatchEvent(event)
 
             this.displayProjects()
         }
@@ -127,6 +136,8 @@ export default class Projects {
                 project: this.getCurrentProject()
             }
         })
+
+        document.dispatchEvent(event)
     }
 
     getCurrentProject() {
@@ -135,6 +146,8 @@ export default class Projects {
 
     displayProjects() {
         const projectList = document.querySelector(".project-list")
+        const header = document.querySelector(".content > h1")
+        const contentArea = document.querySelector(".content-area")
 
         if(projectList){
             projectList.innerHTML = ""
@@ -154,6 +167,9 @@ export default class Projects {
 
                 button.addEventListener("click", () => {
                     this.setCurrentProject(project.id)
+
+                    header.textContent = project.name
+                    contentArea.innerHTML = ""
                 })
 
                 if (project.name !== "Default"){

@@ -10,7 +10,7 @@ const taskbar = new taskBar()
 const homepage = new Homepage()
 const projects = new Projects()
 const tasks = new Tasks()
-const modal = new Modal()
+const modal = new Modal(projects)
 
 document.addEventListener("DOMContentLoaded", () =>{
     taskbar.createTaskBar()

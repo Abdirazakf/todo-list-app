@@ -7,12 +7,16 @@ import upcoming from "../assets/icons/upcoming.svg"
 import check from "../assets/icons/check.svg"
 import plus from "../assets/icons/plus.svg"
 import arrow_down from "../assets/icons/arrow_down.svg"
+import Homepage from "./homepage"
+
+const homepage = new Homepage()
 
 export default class taskBar {    
     createTaskBar() {
         const taskbar = document.querySelector(".task-bar")
 
         function createTaskBarHeader(){
+            const content = document.querySelector(".content")
             const headerContainer = document.createElement("div")
             headerContainer.classList.add("task-bar-header")
 
@@ -23,6 +27,11 @@ export default class taskBar {
             const header = document.createElement("h2")
             header.classList.add("logo-header")
             header.textContent = "PlannerPro"
+
+            header.addEventListener("click", () => {
+                content.innerHTML = ""
+                homepage.loadHomepage()
+            })
 
             const control = document.createElement("button")
             control.classList.add("task-bar-control")
