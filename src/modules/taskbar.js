@@ -8,8 +8,10 @@ import check from "../assets/icons/check.svg"
 import plus from "../assets/icons/plus.svg"
 import arrow_down from "../assets/icons/arrow_down.svg"
 import Homepage from "./homepage"
+import Tasks from "./tasks"
 
 const homepage = new Homepage()
+const tasks = new Tasks()
 
 export default class taskBar {    
     createTaskBar() {
@@ -31,6 +33,7 @@ export default class taskBar {
             header.addEventListener("click", () => {
                 content.innerHTML = ""
                 homepage.loadHomepage()
+                tasks.tasksUIEvents()
             })
 
             const control = document.createElement("button")

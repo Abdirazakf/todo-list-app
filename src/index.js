@@ -9,7 +9,7 @@ import Modal from "./modules/modal.js"
 const taskbar = new taskBar()
 const homepage = new Homepage()
 const projects = new Projects()
-const tasks = new Tasks()
+const tasks = new Tasks(projects)
 const modal = new Modal(projects)
 
 document.addEventListener("DOMContentLoaded", () =>{

@@ -5,7 +5,7 @@ export default class Projects {
         this.resizeButton = null
 
         this.defaultProject = {
-            id: 'a' + crypto.randomUUID(),
+            id: 'p' + crypto.randomUUID(),
             name: "Default",
             tasks: []
         }
@@ -89,7 +89,7 @@ export default class Projects {
 
     createProject(name) {
         return {
-            id: "a" + crypto.randomUUID(),
+            id: "p" + crypto.randomUUID(),
             name: name,
             tasks: []
         }
@@ -192,10 +192,20 @@ export default class Projects {
         }
     }
 
+    storeData() {
+        localStorage.setItem("projects-array", this.projects.projects)
+    }
+
+    getData() {
+        this.storeData()
+        return localStorage.getItem("projects-array")
+    }
+
     init(){
         this.expandProjectButton()
         this.projectUIEvents()
         this.handleProjectForm()
         this.displayProjects()
+        this.getData()
     }
 }
