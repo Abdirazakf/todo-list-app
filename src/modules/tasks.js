@@ -143,11 +143,75 @@ export default class Tasks {
                 content.appendChild(contentArea)
             })
         })
-    }      
+    }
+
+    completedTasks() {
+        const button = document.querySelector(".complete-button")
+        const content = document.querySelector(".content")
+
+        button.addEventListener("click", () =>{
+            content.innerHTML = ""
+            const header = document.createElement("h1")
+            header.textContent = "Completed Tasks"
+            const contentArea = document.createElement("div")
+            contentArea.classList.add("project-task-area")
+
+            this.projects.projects.forEach(project =>{
+                project.tasks.forEach(task => {
+                    if (task.completed){
+                        const taskCard = document.createElement("div")
+                        taskCard.classList.add("card")
+                        const cardContent = document.createElement("div")
+                        cardContent.classList.add("card-content")
+                        
+                        const taskTitle = document.createElement("h3")
+                        taskTitle.textContent = task.title
+                        cardContent.appendChild(taskTitle)
+
+                        const taskDesc = document.createElement("p")
+                        taskDesc.textContent = `Description: ${task.desc}`
+                        cardContent.appendChild(taskDesc)
+
+                        const taskDate = document.createElement("p")
+                        taskDate.textContent = `Due Date: ${task.dueDate}`
+                        cardContent.appendChild(taskDate)
+
+                        const taskPriority = document.createElement("p")
+                        taskPriority.textContent = `Priority: ${task.priority}`
+                        cardContent.appendChild(taskPriority)
+
+                        const statusDiv = document.createElement("div")
+                        const taskStatus = document.createElement("input")
+                        const statusLabel = document.createElement("label")
+                        statusLabel.textContent = "Completed"
+                        statusLabel.htmlFor = "completed"
+                        taskStatus.setAttribute("id", "completed")
+                        taskStatus.type = "checkbox"
+                        taskStatus.checked = task.completed || false
+
+                        taskStatus.addEventListener("change", () =>{
+                            this.projects.toggleTaskComplete(project.id, task.id)
+                            console.log(project)
+                        })
+
+                        statusDiv.appendChild(statusLabel)
+                        statusDiv.appendChild(taskStatus)
+                        cardContent.appendChild(statusDiv)
+                        taskCard.appendChild(cardContent)
+                        contentArea.appendChild(taskCard)
+                    }
+                })
+
+                content.appendChild(header)
+                content.appendChild(contentArea)
+            })
+        })
+    }
 
     init() {
         this.tasksUIEvents()
         this.handleTaskForm()
         this.allTasks()
+        this.completedTasks()
     }
 }
