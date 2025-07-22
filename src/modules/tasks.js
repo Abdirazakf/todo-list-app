@@ -128,7 +128,7 @@ export default class Tasks {
                     taskStatus.checked = task.completed || false
                     
                     taskStatus.addEventListener("change", () =>{
-                        projectClass.toggleTaskComplete(project.id, task.id)
+                        this.projects.toggleTaskComplete(project.id, task.id)
                         console.log(project)
                     })
                 
