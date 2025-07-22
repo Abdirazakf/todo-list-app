@@ -5,7 +5,7 @@ export default class Projects {
         this.resizeButton = null
 
         this.defaultProject = {
-            id: 'p' + crypto.randomUUID(),
+            id: "d77c4d961-9670-4df4-8378-7947633ca082",
             name: "Default",
             tasks: []
         }
@@ -252,19 +252,35 @@ export default class Projects {
     }
 
     storeData() {
-        localStorage.setItem("projects-array", this.projects.projects)
+        localStorage.setItem("projects", JSON.stringify(this.projects))
+        localStorage.setItem("currentProjectID", JSON.stringify(this.currentProjectID))
     }
 
-    getData() {
-        this.storeData()
-        return localStorage.getItem("projects-array")
+    loadData() {
+        const storedProjects = localStorage.getItem("projects")
+        const storedID = localStorage.getItem("currentProjectID")
+
+        if (storedProjects) {
+            try {
+                this.projects = JSON.parse(storedProjects)
+                if (storedID) {
+                    this.currentProjectID = storedID
+                }
+            } catch (e) {
+                console.error("Error loading projects from localStorage: ", e)
+            }
+        }
     }
 
     init(){
+        this.loadData()
         this.expandProjectButton()
         this.projectUIEvents()
         this.handleProjectForm()
         this.displayProjects()
-        this.getData()
+
+        document.addEventListener("taskAdded", () =>{
+            this.storeData()
+        })
     }
 }

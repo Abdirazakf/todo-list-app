@@ -50,7 +50,10 @@ export default class Tasks {
             const priority = formData.get("priority")
             const project = formData.get("project")
 
-            if (title){
+            console.log("Form data:", { title, desc, dueDate, priority, project })
+            console.log("Available projects:", this.projects.projects)
+
+            if (title && project){
                 const newTask = {
                     id: "t" + crypto.randomUUID(),
                     title,
@@ -60,6 +63,7 @@ export default class Tasks {
                     project,
                     completed: false
                 }
+
                 this.addTasktoProject(project, newTask)
             }
 
@@ -67,12 +71,25 @@ export default class Tasks {
         })
     }
 
-    addTasktoProject(projectID, task){
-        const taskProject = this.projects.projects.find(p => p.id == projectID)
-        taskProject.tasks.push(task)
-
-        const event = new CustomEvent("taskAdded")
-        document.dispatchEvent(event)
+    addTasktoProject(projectID, task) {
+        const taskProject = this.projects.projects.find(p => p.id === projectID)
+        
+        if (taskProject) {
+            taskProject.tasks.push(task)
+            
+            const event = new CustomEvent("taskAdded", {
+                detail: {
+                    projectID: projectID,
+                    task: task
+                }
+            })
+            document.dispatchEvent(event)
+            
+            console.log("Task added to project:", taskProject.name)
+        } else {
+            console.error("Project not found with ID:", projectID)
+            console.log("Available project IDs:", this.projects.projects.map(p => p.id))
+        }
     }
 
     init() {
