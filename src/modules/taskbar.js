@@ -137,6 +137,42 @@ export default class taskBar {
             taskbar.appendChild(projectContainer)
         }
 
+        function controlSideBar() {
+            const taskBar  = document.querySelector(".task-bar")
+            const sidebarButton = document.querySelector(".task-bar-control")
+            const content = document.querySelector(".content")
+            let isOpen = true
+
+            const restoreButton = document.createElement("button")
+            restoreButton.classList.add("restore-sidebar-button")
+            const image = document.createElement("img")
+            image.src = arrow_down
+            restoreButton.appendChild(image)
+            restoreButton.style.zIndex = "1000"
+            document.body.appendChild(restoreButton)
+
+            sidebarButton.addEventListener("click", () =>{
+                if (isOpen) {
+                    taskBar.style.width = 0
+                    taskBar.style.padding = 0
+                    content.style.width = "100%";
+                    isOpen = false
+                    setTimeout(() => {
+                        restoreButton.style.display = "inline"
+                    }, 500)
+                }
+            })
+            
+            restoreButton.addEventListener("click", () => {
+                if (!isOpen){
+                    taskBar.style.width = "20%"
+                    taskBar.style.padding = "20px 10px 10px 10px"
+                    restoreButton.style.display = "none"
+                    isOpen = true
+                }
+            })
+        }
+
         function createProjectList(){
             const projectContainer = document.querySelector(".project-container")
             const projectList = document.createElement("div")
@@ -148,6 +184,7 @@ export default class taskBar {
         createTaskBarButtons()
         createTaskBarProjects()
         createProjectList()
+        controlSideBar()
     }
 
     init() {

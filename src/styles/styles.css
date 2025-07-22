@@ -73,6 +73,23 @@ body {
     overflow: hidden;
 }
 
+.restore-sidebar-button {
+  display: none;
+  position: fixed;
+  top: 300px;
+  left: 0px;
+  padding: 0;
+}
+
+.restore-sidebar-button:hover {
+  cursor: pointer;
+}
+
+.restore-sidebar-button > img {
+  rotate: -90deg;
+  width: 30px;
+}
+
 .task-bar-header {
     display: flex;
     align-items: center;
