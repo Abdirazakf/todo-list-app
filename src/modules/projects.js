@@ -205,10 +205,12 @@ export default class Projects {
                         statusLabel.htmlFor = "completed"
                         taskStatus.setAttribute("id", "completed")
                         taskStatus.type = "checkbox"
+                        taskStatus.checked = task.completed || false
 
-                        if (task.completed){
-                            taskStatus.checked = true
-                        }
+                        taskStatus.addEventListener("change", () =>{
+                            this.toggleTaskComplete(project.id, task.id)
+                            console.log(project.tasks)
+                        })
 
                         statusDiv.appendChild(statusLabel)
                         statusDiv.appendChild(taskStatus)
@@ -236,6 +238,16 @@ export default class Projects {
                     button.appendChild(deleteButton)
                 }
             })
+        }
+    }
+
+    toggleTaskComplete(projectID, taskID) {
+        const project = this.projects.find(p => p.id == projectID)
+        if (project){
+            const task = project.tasks.find(t => t.id == taskID)
+            if (task){
+                task.completed = !task.completed
+            }
         }
     }
 
