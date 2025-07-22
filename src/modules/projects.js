@@ -209,7 +209,7 @@ export default class Projects {
 
                         taskStatus.addEventListener("change", () =>{
                             this.toggleTaskComplete(project.id, task.id)
-                            console.log(project.tasks)
+                            console.log(project)
                         })
 
                         statusDiv.appendChild(statusLabel)
@@ -247,6 +247,7 @@ export default class Projects {
             const task = project.tasks.find(t => t.id == taskID)
             if (task){
                 task.completed = !task.completed
+                this.storeData()
             }
         }
     }

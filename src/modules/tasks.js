@@ -49,10 +49,7 @@ export default class Tasks {
             const dueDate = formData.get("date")
             const priority = formData.get("priority")
             const project = formData.get("project")
-
-            console.log("Form data:", { title, desc, dueDate, priority, project })
-            console.log("Available projects:", this.projects.projects)
-
+            
             if (title && project){
                 const newTask = {
                     id: "t" + crypto.randomUUID(),
@@ -84,11 +81,6 @@ export default class Tasks {
                 }
             })
             document.dispatchEvent(event)
-            
-            console.log("Task added to project:", taskProject.name)
-        } else {
-            console.error("Project not found with ID:", projectID)
-            console.log("Available project IDs:", this.projects.projects.map(p => p.id))
         }
     }
 
