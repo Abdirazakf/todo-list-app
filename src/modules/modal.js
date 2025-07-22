@@ -4,6 +4,7 @@ export default class Modal {
     }
 
     createTaskModal() {
+        this.projects.loadData()
         const taskModal = document.querySelector(".task-modal")
         const header = document.createElement("h2")
         header.textContent = "Add a Task"
