@@ -155,7 +155,6 @@ export default class Modal {
 
             if (this.projects){
                 this.projects.projects.forEach(p => {
-                    console.log(`Adding ${p.name} to the list`)
                     const option = document.createElement("option")
                     option.textContent = p.name
                     option.value = p.id

@@ -1,3 +1,7 @@
+import Projects from "./projects"
+
+const projectClass = new Projects()
+
 export default class Tasks {
     constructor(projectInstance){
         this.projects = projectInstance
@@ -58,6 +62,7 @@ export default class Tasks {
                 }
                 this.addTasktoProject(project, newTask)
             }
+
             form.reset()
         })
     }
@@ -65,8 +70,9 @@ export default class Tasks {
     addTasktoProject(projectID, task){
         const taskProject = this.projects.projects.find(p => p.id == projectID)
         taskProject.tasks.push(task)
-        console.log("Added Task to project")
-        console.log(this.projects.projects)
+
+        const event = new CustomEvent("taskAdded")
+        document.dispatchEvent(event)
     }
 
     init() {

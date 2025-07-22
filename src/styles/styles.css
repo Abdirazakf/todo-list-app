@@ -38,6 +38,8 @@
     --light-gray: #b6b5b4;
     --dove-gray: #666666;
     --light-red: #e52e26;
+    --card-background: rgb(255, 245, 220);
+    --card-outline: linear-gradient(144deg,#DD4C3E, #E5A226 50%,#E5A226);
 }
 
 ::backdrop{
@@ -491,4 +493,46 @@ label {
 
 .radio-button:hover input[type="radio"]:checked + .radio-circle::before {
   background-color: #555;
+}
+
+
+.project-task-area {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.card {
+  max-height: 250px;
+  min-width: 400px;
+  border-radius: 20px;
+  padding: 5px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  background-image: var(--card-outline)
+}
+
+.card-content {
+  background: var(--card-background);
+  border-radius: 17px;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+}
+
+.card-content > h3 {
+  text-align: center;
+}
+
+.card-content > div > input {
+  width: initial;
+  margin: 0;
+}
+
+.card-content > div {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }

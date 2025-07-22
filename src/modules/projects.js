@@ -146,8 +146,7 @@ export default class Projects {
 
     displayProjects() {
         const projectList = document.querySelector(".project-list")
-        const header = document.querySelector(".content > h1")
-        const contentArea = document.querySelector(".content-area")
+        const content = document.querySelector(".content")
 
         if(projectList){
             projectList.innerHTML = ""
@@ -167,9 +166,57 @@ export default class Projects {
 
                 button.addEventListener("click", () => {
                     this.setCurrentProject(project.id)
+                    content.innerHTML = ""
 
+                    const header = document.createElement("h1")
                     header.textContent = project.name
-                    contentArea.innerHTML = ""
+                    content.appendChild(header)
+
+                    const contentArea = document.createElement("div")
+                    contentArea.classList.add("project-task-area")
+                    content.appendChild(contentArea)
+
+                    project.tasks.forEach(task => {
+                        const taskCard = document.createElement("div")
+                        taskCard.classList.add("card")
+                        const cardContent = document.createElement("div")
+                        cardContent.classList.add("card-content")
+
+                        const taskTitle = document.createElement("h3")
+                        taskTitle.textContent = task.title
+                        cardContent.appendChild(taskTitle)
+
+                        const taskDesc = document.createElement("p")
+                        taskDesc.textContent = `Description: ${task.desc}`
+                        cardContent.appendChild(taskDesc)
+
+                        const taskDate = document.createElement("p")
+                        taskDate.textContent = `Due Date: ${task.dueDate}`
+                        cardContent.appendChild(taskDate)
+
+                        const taskPriority = document.createElement("p")
+                        taskPriority.textContent = `Priority: ${task.priority}`
+                        cardContent.appendChild(taskPriority)
+
+                        const statusDiv = document.createElement("div")
+                        const taskStatus = document.createElement("input")
+                        const statusLabel = document.createElement("label")
+                        statusLabel.textContent = "Completed"
+                        statusLabel.htmlFor = "completed"
+                        taskStatus.setAttribute("id", "completed")
+                        taskStatus.type = "checkbox"
+
+                        if (task.completed){
+                            taskStatus.checked = true
+                        }
+
+                        statusDiv.appendChild(statusLabel)
+                        statusDiv.appendChild(taskStatus)
+                        cardContent.appendChild(statusDiv)
+
+                        taskCard.appendChild(cardContent)
+                        contentArea.appendChild(taskCard)
+                    })
                 })
 
                 if (project.name !== "Default"){
